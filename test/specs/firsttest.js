@@ -8,7 +8,7 @@ describe('Ecommerce Application',async()=>
         console.log(await browser.getTitle())
         await expect(browser).toHaveTitleContaining("Rahul Shetty Academy")
         await $("input[name='username']").setValue("vinod")
-        await browser.pause(2000)
+        await browser.pause(3000)
         await $("//input[@name='username']").setValue("rahulshettyacademy")
         await browser.pause(2000)
         await $("//input[@name='password']").setValue("learningg")
@@ -17,7 +17,7 @@ describe('Ecommerce Application',async()=>
         await browser.waitUntil(async()=>await $("#signInBtn").getAttribute('value') === 'Sign In',
         {
             timeout: 5000,
-            timeoutMsg: 'Error message is not displayed.'
+            timeoutMsg: 'Error message is not displayed'
         })
 
         await console.log(await $(".alert-danger").getText())
