@@ -17,7 +17,7 @@ describe('Ecommerce Application',async()=>
         await browser.waitUntil(async()=>await $("#signInBtn").getAttribute('value') === 'Sign In',
         {
             timeout: 5000,
-            timeoutMsg: 'Error message is not displayed'
+            timeoutMsg: 'Error message is not displayed.'
         })
 
         await console.log(await $(".alert-danger").getText())
