@@ -1,4 +1,4 @@
-name: Github
+name: Build
 on:
 # Trigger analysis when pushing to your main branches, and when creating a pull request.
 push:
@@ -6,8 +6,7 @@ branches:
 - main
 pull_request:
   types: [opened, synchronize, reopened]
-I
-name: Main Workflow
+
 jobs:
 sonarqube:
   runs-on: ubuntu-latest 
