@@ -1,4 +1,4 @@
-name: Build on Windows
+name: SonarQube Analysis
 
 on:
   push:
@@ -6,17 +6,21 @@ on:
       - main
 
 jobs:
-  build:
+  sonarqube:
     runs-on: windows-latest
 
-steps:
-  - uses: actions/checkout@v3
-  with:
-# Disabling shallow clone is recommended for improving relevancy of reporting
-fetch-depth: 0
-- name: SonarQube Scan
-uses: sonarsource/sonarqube-scan-action@master
-env:
-SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: SonarQube Scan
+      run: |
+        sonar-scanner
+      env:
+        SONAR_TOKEN: ${{ squ_0221916ff2e934a08e18f8f1ccddb96ea77eba63 }}
