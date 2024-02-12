@@ -9,7 +9,7 @@ describe('Ecommerce Application',async()=>
         await expect(browser).toHaveTitleContaining("Rahul Shetty Academy")
         await $("input[name='username']").setValue("vinod")
         await browser.pause(3000)
-        await $("//input[@name='username']").setValue("rahulshettyacademy")
+        await $("//input[@name='username']").setValue("rahulshettyacademy.")
         await browser.pause(2000)
         await $("//input[@name='password']").setValue("learningg")
         await browser.pause(2000)
