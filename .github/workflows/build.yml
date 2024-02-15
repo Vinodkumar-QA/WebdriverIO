@@ -1,7 +1,9 @@
 name: "WebdriverIO"
 on:
-  workflow_dispatch:
-
+   push:
+    branches:
+      - main
+      
 jobs:
   DemoSonarCloudSCan:
     runs-on: ubuntu-latest
