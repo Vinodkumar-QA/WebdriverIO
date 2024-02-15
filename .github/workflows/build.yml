@@ -2,14 +2,14 @@ name: "WebdriverIO"
 on:
    push:
     branches:
-      - main
+      - '*'
       
 jobs:
   DemoSonarCloudSCan:
     runs-on: ubuntu-latest
     permissions: read-all
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
             fetch-depth: 0
       - name: SonarCloud Scan
