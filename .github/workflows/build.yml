@@ -1,22 +1,30 @@
-name: "WebdriverIO"
+name: SonarCloud Scan
+
 on:
- workflow_dispatch:
-      
+  pull_request:
+    branches:
+      - '*'
+
 jobs:
-  DemoSonarCloudSCan:
+  sonarcloud-scan:
     runs-on: ubuntu-latest
-    permissions: read-all
+
     steps:
-      - uses: actions/checkout@v2
-        with:
-            fetch-depth: 0
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-            GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-              -Dsonar.organization=vinodkumar0099
-              -Dsonar.projectKey=WebdriverIO
-              
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up SonarCloud
+      uses: sonarsource/sonarcloud-github-action@v3
+      with:
+        sonar-token: ${{ secrets.SONAR_TOKEN }}
+        project-key: WebdriverIO
+        organization: vinodkumar0099
+
+    - name: Build and Analyze
+      run: |
+        # Replace the following command with your build command
+        # Example for Maven project:
+        mvn clean verify sonar:sonar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
